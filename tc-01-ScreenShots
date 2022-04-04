@@ -1,0 +1,84 @@
+package screenshot.test;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
+
+public class A {
+	
+	public static void main(String[] args) throws IOException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\balaji\\Desktop\\Java Automation\\1-Jan\\Automation\\chromedriver_win32 (2)\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();		
+		driver.get("https://www.facebook.com/");
+		driver.manage().window().maximize();
+		
+		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		
+		File f = new File("C:\\Users\\balaji\\Desktop\\Java Automation\\1-Jan\\Automation\\screenshot\\image2.jpg");
+		
+		FileHandler.copy(src, f);
+		
+		
+	}
+
+}
+
+How to take screenshot?
+
+	TO screenshot in selenium type cast the driver to takescreenshot interface.
+	((Takesscreenshot)driver)
+	Where driver is object name.
+	After casting we have to call method that is getScreenshotAs(), here this method need OutputType.FILE as argument.
+Ex: ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+	Above statement will take screenshot store it in system library to get this into one variable
+ File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	Now the screen is stored in src variable which is available inside system library.
+	To get this screenshot into local drive, ceate object of File class pass local drive path as argument to this class.
+	Ex: File f = new File(“local drive path with file extension”);
+To copy the screenshot from system library to local drive call the use the class FileHandler which has static method copy(), here  pass  source file and destionation fle path as argument.
+ Ex: FileHandler.copy(src, dest);
+
+
+
+package screenshot.test;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
+
+public class A {
+	
+	public static void main(String[] args) throws IOException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\balaji\\Desktop\\Java Automation\\1-Jan\\Automation\\chromedriver_win32 (2)\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();		
+		driver.get("https://www.facebook.com/");
+		driver.manage().window().maximize();	
+		
+		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		
+		Date d = new Date();		
+		String date = d.toString();		
+		String str = date.replace(":", "_");
+		
+		File f = new File("C:\\Users\\balaji\\Desktop\\Java Automation\\1-Jan\\Automation\\screenshot\\image_"+str+".jpg");
+		
+		FileHandler.copy(src, f);
+		
+		
+	}
+
+}
+
