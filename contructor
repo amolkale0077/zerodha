@@ -1,0 +1,83 @@
+//Default constructor
+package constructor;
+
+public class JanBatch {
+	
+	int empID;
+	String empName;
+	float salary;
+	
+
+	
+	public void test() {
+		System.out.println(empID);
+		System.out.println(empName);
+		System.out.println(salary);
+	}
+	
+	
+	public static void main(String[] args) {
+		JanBatch j = new JanBatch();
+		j.test();
+		
+		
+	}
+
+}
+
+package constructor;
+
+public class Employee {
+	
+	int empID;
+	String empName;
+	float sal;
+	
+	//Non Parameterized Constructor
+	Employee(){
+		
+		empID=2001;
+		empName="Ramesh";	
+	
+	}
+	
+	Employee(int a, String str){
+		empID=a;
+		empName =str;
+		
+	}
+	
+	Employee(int a, float b){
+		empID=a;
+		sal=b;
+		
+	}
+		
+	
+	//Method
+	public void demo() {	
+		System.out.println(empID);
+		System.out.println(empName);
+		
+		int mobNo;
+	}
+	
+	
+	public static void main(String[] args) {
+	
+		Employee em = new Employee();
+		em.demo();
+		
+		Employee em1 = new Employee(1001, "Dinesh");
+		em1.demo();
+		
+		Employee em2 = new Employee(1001, 100.5f);
+		
+		System.out.println(em.empID);
+		System.out.println(em1.empID);
+		
+	}
+
+}
+
+
